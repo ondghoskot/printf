@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/**
+ * struct format - structure containing specifier and corresponding functions
+ * @sp: the format of the specifier (data type)
+ * @fc: function that prints the corresponding data type
+ */
 typedef struct format
 {
 	char *sp;

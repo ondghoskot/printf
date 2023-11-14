@@ -39,5 +39,5 @@ Here:
 		len++;
 	}
 	va_end(ls);
-	return(len);
+	return (len);
 }
