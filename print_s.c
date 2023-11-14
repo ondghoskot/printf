@@ -7,9 +7,9 @@
  */
 int print_s(char *format, va_list ls)
 {
-	(void)format;
-	int i, j, len;;
 	char *str;
+	int i, j, len;
+	(void)format;
 
 	len = 0;
 	str = va_arg(ls, char *);
