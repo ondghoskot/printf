@@ -22,6 +22,8 @@ int _printf(const char *format, ...);
 int print_c(va_list ls);
 int print_s(va_list ls);
 int print_mod(void);
+int print_i(va_list ls);
+int print_d(va_list ls);
 
 
 #endif

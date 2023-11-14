@@ -10,7 +10,9 @@ int _printf(const char *format, ...)
 	match getfc[] = {
 		{"%c", print_c},
 		{"%s", print_s},
-		{"%%", print_mod}
+		{"%%", print_mod},
+		{"%d", print_d},
+		{"%i", print_i}
 	};
 
 	va_list ls;
@@ -23,7 +25,7 @@ int _printf(const char *format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		j = 2;
+		j = 4;
 		while (j >= 0)
 		{
 			if (getfc[j].sp[0] == format[i] && getfc[j].sp[1] == format[i + 1])
