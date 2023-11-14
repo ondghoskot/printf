@@ -5,10 +5,11 @@
  * @ls: va_list of characters to print
  * Return: number of characters to print
  */
-int print_c(char *format, va_list ls)
+int print_c(va_list ls)
 {
-	(void)format;
+	char c;
 
-	_putchar(va_arg(ls, int));
+	c = va_arg(ls, int);
+	_putchar(c);
 	return (1);
 }

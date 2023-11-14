@@ -5,46 +5,39 @@
  * @format: string that contains format to print
  * Return: number of characters entered
  */
-int _printf(char *format, ...)
+int _printf(const char *format, ...)
 {
-	int entered = 0, (*print_x)(char *format, va_list);
-	va_list ls;
-	char specifier[3];
+	match getfc[] = {
+		{"%c", print_c},
+		{"%s", print_s},
+		{"%%", print_mod}
+	};
 
-	if (!format)
-		return (-1);
-	specifier[2] = '\0';
+	va_list ls;
+	int j;
+	int len = 0, i = 0;
+
 	va_start(ls, format);
-	_putchar(-1);
-	while (format[0])
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+Here:
+	while (format[i] != '\0')
 	{
-		if (format[0] == '%')
+		j = 2;
+		while (j >= 0)
 		{
-			print_x = get_print_x(format);
-			if (print_x)
+			if (getfc[j].sp[0] == format[i] && getfc[j].sp[1] == format[i + 1])
 			{
-				specifier[0] = '%';
-				specifier[1] = format[1];
-				entered += print_x(specifier, ls);
+				len += getfc[j].fc(ls);
+				i += 2;
+				goto Here;
 			}
-			else if (format[1] != '\0')
-			{
-				entered += _putchar('%');
-				entered += _putchar(format[1]);
-			}
-			else
-			{
-				entered += _putchar('%');
-				break;
-			}
-			format += 2;
+			j--;
 		}
-		else
-		{
-			entered += _putchar(format[0]);
-			format++;
-		}
+		_putchar(format[i]);
+		i++;
+		len++;
 	}
-	_putchar(-2);
-	return (entered);
+	va_end(ls);
+	return(len);
 }
