@@ -5,7 +5,7 @@
  * @format: string containing the specifier
  * Return: pointer to the right print function
  */
-int (*get_print_x(char *format))(va_list)
+int (*get_print_x(char *format))(char *format, va_list)
 {
 	int i;
 
@@ -16,7 +16,7 @@ int (*get_print_x(char *format))(va_list)
 		{NULL, NULL}
 	};
 
-	if (format[1] == ' ' || format[´] == '\0')
+	if (format[1] == ' ' || format[1] == '\0')
 		return (NULL);
 	for (i = 0; getfnc[i].specifier; i++)
 	{

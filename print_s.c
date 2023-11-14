@@ -5,12 +5,14 @@
  * @ls: va_list of strings to print
  * Return: number of characters printed (length of string)
  */
-int print_s(va_list ls)
+int print_s(char *format, va_list ls)
 {
-	char *str = va_arg(strs, char *);
-	int len = 0;
-	unsigned int i, j;
+	(void)format;
+	int i, j, len;;
+	char *str;
 
+	len = 0;
+	str = va_arg(ls, char *);
 	if (!str)
 		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)

@@ -7,7 +7,7 @@
  */
 int _printf(char *format, ...)
 {
-	int ncharz = 0, (*print_x)(va_list);
+	int entered = 0, (*print_x)(char *format, va_list);
 	va_list ls;
 	char specifier[3];
 

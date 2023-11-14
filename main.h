@@ -13,16 +13,16 @@
 typedef struct print_format
 {
 	char *specifier;
-	int (*fnc)(va_list);
+	int (*fnc)(char *format, va_list);
 } print_x;
 
-int _printf(const char *format, ...);
-int (*get_print_x(char *format))(va_list);
+int _printf(char *format, ...);
+int (*get_print_x(char *format))(char *format, va_list);
 
 int _putchar(char c);
-int print_c(va_list ls);
-int print_s(va_list ls);
-int print_mod(va_list ls);
+int print_c(char *format, va_list ls);
+int print_s(char *format, va_list ls);
+int print_mod(char *format, va_list ls);
 
 
 #endif
